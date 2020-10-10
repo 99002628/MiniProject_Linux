@@ -1,16 +1,12 @@
 all: all.out
 
-all.out: swimLane.o pellet.o fish.c
+all.out: swimlane.o 
 	gcc $^ -o $@ -lgtest -lgtest_main -lpthread
+
+
+swimlane.o:swimlane.c memoryPool.h
+	gcc $< -c
+
 
 clear:
 	rm -rf *o *.out
-
-swimLane.o:swimLane.c memoryPool.h
-	gcc $< -c
-
-pellet.o:pellet.c memoryPool.h
-	gcc $< -c
-
-fish.o:fish.c memoryPool.h
-	gcc $< -c
