@@ -1,13 +1,16 @@
-all: clear swimLane pellet fish
+all: all.out
+
+all.out: swimLane.o pellet.o fish.c
+	gcc $^ -o $@ -lgtest -lgtest_main -lpthread
 
 clear:
-	rm -rf *o swimLane pellet fish
+	rm -rf *o *.out
 
-swimLane:
-	gcc -o swimlane swimlane.c
+swimLane.o:swimLane.c memoryPool.h
+	gcc $< -c
 
-pellet:
-	gcc -o pellet pellet.c
+pellet.o:pellet.c memoryPool.h
+	gcc $< -c
 
-fish:
-	gcc -o fish fish.c
+fish.o:fish.c memoryPool.h
+	gcc $< -c
